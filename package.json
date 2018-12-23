@@ -1,0 +1,8 @@
+{
+  "name": "html-inline-input-calculator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ryanbrookepayne/html-inline-input-calculator.git",
+  "author": "Ryan Payne <ryan.payne@daveramsey.com>",
+  "license": "MIT"
+}

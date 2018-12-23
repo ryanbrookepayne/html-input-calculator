@@ -6,3 +6,11 @@ HTML input calculator for doing math in the browser. Inspired by the [YNAB budge
 
 * [YNAB budget calculator](https://docs.youneedabudget.com/article/1027-in-line-calculations)
 * [mathjs](http://mathjs.org/)
+
+## Testing
+
+This package uses [Jest](https://jestjs.io/en/) for unit testing.
+
+```bash
+yarn test
+```

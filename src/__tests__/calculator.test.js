@@ -1,16 +1,19 @@
+import * as math from 'mathjs';
 import Calculator from '../calculator.js';
+jest.mock('mathjs', () => {
+  return {
+    eval: jest.fn()
+  };
+});
 
 describe('Calculator', () => {
   describe('calculate', () => {
     it('should perform basic arithmetic', () => {
-      expect(Calculator.calculate('2 + 2')).toBe(4);
-      expect(Calculator.calculate('2 - 2')).toBe(0);
-      expect(Calculator.calculate('2 * 2')).toBe(4);
-      expect(Calculator.calculate('2 / 2')).toBe(1);
-    });
+      math.eval.mockReturnValueOnce(4);
+      const calc = Calculator.calculate('2 + 2');
 
-    it('should log error with undefined symbols', () => {
-      expect(Calculator.calculate('2 $ 2')).toBe(0);
+      expect(math.eval).toBeCalledWith('2 + 2');
+      expect(calc).toBe(4);
     });
   });
 });

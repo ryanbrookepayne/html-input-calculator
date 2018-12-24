@@ -18,7 +18,7 @@ Add a text input to the DOM with an id of `inline-calculator`.
 Import and initialize the package.
 
 ```html
-import InlineCalculator from 'inline-input-calculator';
+import InlineCalculator from 'inline-calculator';
 
 new InlineCalculator();
 ```

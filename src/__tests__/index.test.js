@@ -17,6 +17,15 @@ describe('InlineCalculator', () => {
     input.value = '2 + 2';
   });
 
+  it('should do nothing', () => {
+    input.dispatchEvent(new KeyboardEvent('keydown', {
+      key: 'f',
+    }));
+
+    expect(math.eval).not.toBeCalled();
+    expect(input.value).toBe('2 + 2');
+  });
+
   it('should update input value', () => {
     math.eval.mockReturnValueOnce(4);
 
@@ -26,14 +35,5 @@ describe('InlineCalculator', () => {
 
     expect(math.eval).toBeCalledWith('2 + 2');
     expect(input.value).toBe('4');
-  });
-
-  it('should do nothing', () => {
-    input.dispatchEvent(new KeyboardEvent('keydown', {
-      key: 'f',
-    }));
-
-    expect(math.eval).not.toBeCalled();
-    expect(input.value).toBe('2 + 2');
   });
 });

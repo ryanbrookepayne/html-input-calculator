@@ -1,11 +1,6 @@
 # Inline Calculator
 
-An HTML inline input calculator for doing math in the browser. Inspired by the [YNAB budget calculator](https://docs.youneedabudget.com/article/1027-in-line-calculations).
-
-**References**
-
-* [YNAB budget calculator](https://docs.youneedabudget.com/article/1027-in-line-calculations)
-* [mathjs](http://mathjs.org/)
+An HTML inline input calculator for doing math in the browser. Inspired by the [YNAB budget calculator](https://docs.youneedabudget.com/article/1027-in-line-calculations). Math calculations are computed using [mathjs](http://mathjs.org/).
 
 ## Usage
 
@@ -37,7 +32,25 @@ Will return:
 4
 ```
 
-## Testing
+## Contributing
+
+### Getting Start
+
+Install dependencies with [Yarn](https://yarnpkg.com/en/).
+
+```bash
+yarn install
+```
+
+### Example
+
+To see an example of the inline calculator in action, run the [webpack-dev-server](https://webpack.js.org/guides/development/#using-webpack-dev-server). Webpack will open <http://localhost:8080/> in your browser.
+
+```bash
+yarn start
+```
+
+### Testing
 
 This package uses [Jest](https://jestjs.io/en/) for unit testing.
 

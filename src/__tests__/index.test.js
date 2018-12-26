@@ -8,21 +8,32 @@ jest.mock('mathjs', () => {
 });
 
 describe('InlineCalculator', () => {
-  beforeAll(() => {
+  let input;
+
+  beforeEach(() => {
     document.body.innerHTML = '<input type="text" id="inline-calculator">';
+    new InlineCalculator();
+    input = document.getElementById('inline-calculator');
+    input.value = '2 + 2';
   });
 
   it('should update input value', () => {
-    new InlineCalculator();
-    let input = document.getElementById('inline-calculator');
     math.eval.mockReturnValueOnce(4);
 
-    input.value = '2 + 2';
     input.dispatchEvent(new KeyboardEvent('keydown', {
       key: 'Enter',
     }));
 
     expect(math.eval).toBeCalledWith('2 + 2');
-    expect(input.value).toBe("4");
+    expect(input.value).toBe('4');
+  });
+
+  it('should do nothing', () => {
+    input.dispatchEvent(new KeyboardEvent('keydown', {
+      key: 'f',
+    }));
+
+    expect(math.eval).not.toBeCalled();
+    expect(input.value).toBe('2 + 2');
   });
 });

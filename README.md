@@ -14,7 +14,7 @@ Add a text input to the DOM with an id of `inline-calculator`.
 
 Import and initialize the package.
 
-```html
+```js
 import InlineCalculator from 'inline-calculator';
 
 new InlineCalculator();

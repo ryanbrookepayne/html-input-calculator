@@ -38,7 +38,7 @@ Will return:
 
 ### Selector
 
-Override the default id (`#inline-calculator`) selector. The method uses [`Document.querySelector()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) so you can pass any type of selector you want.
+Override the default id (`#inline-calculator`) selector. The event listener uses [`Document.querySelector()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) so you can pass any type of selector you want.
 
 ```html
 <input type="text" class="my-custom-class">

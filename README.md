@@ -34,6 +34,24 @@ Will return:
 4
 ```
 
+## Configuration
+
+## Selector
+
+Override the default id (`#inline-calculator`) selector.
+
+```html
+<input type="text" class="inline-calculator">
+```
+
+```js
+import InlineCalculator from 'inline-calculator';
+
+new InlineCalculator({
+  selector: '.inline-calculator'
+});
+```
+
 ## Contributing
 
 ### Getting Start

@@ -36,7 +36,7 @@ Will return:
 
 ## Configuration
 
-## Selector
+### `selector`
 
 Override the default id (`#inline-calculator`) selector.
 

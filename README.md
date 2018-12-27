@@ -38,17 +38,17 @@ Will return:
 
 ### Selector
 
-Override the default id (`#inline-calculator`) selector.
+Override the default id (`#inline-calculator`) selector. The method uses [`Document.querySelector()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) so you can pass any type of selector you want.
 
 ```html
-<input type="text" class="inline-calculator">
+<input type="text" class="my-custom-class">
 ```
 
 ```js
 import InlineCalculator from 'inline-calculator';
 
 new InlineCalculator({
-  selector: '.inline-calculator'
+  selector: '.my-custom-class'
 });
 ```
 

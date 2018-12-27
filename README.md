@@ -2,6 +2,8 @@
 
 An HTML inline input calculator for doing math in the browser. Inspired by the [YNAB budget calculator](https://docs.youneedabudget.com/article/1027-in-line-calculations). Math calculations are computed using [mathjs](http://mathjs.org/).
 
+![](./calculator-demo.gif)
+
 ## Usage
 
 Add a text input to the DOM with an id of `inline-calculator`.

@@ -1,18 +1,44 @@
 # Inline Calculator
 
+[![npm version](https://badge.fury.io/js/inline-calculator.svg)](https://badge.fury.io/js/inline-calculator)
+
 An HTML inline input calculator for doing math in the browser. Inspired by the [YNAB budget calculator](https://docs.youneedabudget.com/article/1027-in-line-calculations). Math calculations are computed using [mathjs](http://mathjs.org/).
 
 ![](./demo.gif)
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+### Table of Contents
+
+- [Usage](#usage)
+- [Configuration](#configuration)
+  - [Selector](#selector)
+- [Contributing](#contributing)
+  - [Getting Start](#getting-start)
+  - [Example](#example)
+  - [Testing](#testing)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Usage
 
-Add a text input to the DOM with an id of `inline-calculator`.
+Install the package.
+
+```bash
+# Yarn
+yarn add inline-calculator
+
+# NPM
+npm i inline-calculator
+```
+
+Create a text input with an id of `inline-calculator`.
 
 ```html
 <input type="text" id="inline-calculator">
 ```
 
-Import and initialize the package.
+Import and initialize the constructor.
 
 ```js
 import InlineCalculator from 'inline-calculator';
@@ -20,7 +46,7 @@ import InlineCalculator from 'inline-calculator';
 new InlineCalculator();
 ```
 
-When the user enters a mathematical expression and presses the enter key, the input's value will update with the return value of the expression.
+When users enter a mathematical expression and press the enter key, the input's value will update with the return value of the expression.
 
 **For Example:**
 

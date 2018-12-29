@@ -8,9 +8,9 @@ jest.mock('mathjs', () => {
 });
 
 describe('InlineCalculator', () => {
-  let input;
-
   describe('Default config', () => {
+    let input;
+
     beforeEach(() => {
       document.body.innerHTML = '<input type="text" id="inline-calculator">';
       new InlineCalculator();
@@ -40,6 +40,8 @@ describe('InlineCalculator', () => {
   });
 
   describe('Custom selector', () => {
+    let input;
+
     beforeEach(() => {
       document.body.innerHTML = '<input type="text" class="inline-calculator">';
       new InlineCalculator({

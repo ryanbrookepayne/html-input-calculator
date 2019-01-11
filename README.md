@@ -78,6 +78,49 @@ new InlineCalculator({
 });
 ```
 
+You can instantiate as many instances as you'd like. It is recommended that you use different selectors for each instance as the event hooks may be unexpectedly fired multiple times.
+
+```js
+import InlineCalculator from 'inline-calculator';
+
+var instanceOne = new InlineCalculator({
+  selector: '#instanceOne'
+});
+
+var instanceTwo = new InlineCalculator({
+  selector: '.instance-two'
+});
+```
+
+
+### Hooks
+
+#### onCalculated
+
+Called directly after the calculation
+
+```js
+import InlineCalculator from 'inline-calculator';
+new InlineCalculator({
+  onCalculated: function (val) {
+    console.log(val)
+  }
+})
+```
+
+#### onError
+
+Called on any exception
+
+```js
+import InlineCalculator from 'inline-calculator';
+new InlineCalculator({
+  onError: function (err) {
+    console.error(err)
+  }
+})
+```
+
 ## Contributing
 
 ### Getting Start

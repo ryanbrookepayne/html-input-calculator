@@ -2,17 +2,27 @@ import * as math from 'mathjs';
 
 export default class InlineCalculator {
   constructor(userConfig) {
-    let input;
     const defaultConfig = {
-      selector: '#inline-calculator'
+      selector: '#inline-calculator',
+      onCalculated: function(val){},
+      onError: function(err){}
     };
-    const config = Object.assign(defaultConfig, userConfig);
 
-    input = document.querySelector(config.selector);
-    input.addEventListener('keydown', (event) => {
-      if (event.key !== 'Enter') return;
+    this.config = Object.assign({}, defaultConfig, userConfig);
+    this.onError = this.config.onError;
+    this.onCalculated = this.config.onCalculated;
+    this.input = document.querySelector(this.config.selector);
+    this.input.addEventListener('keydown', this.inputHandler.bind(this), false);
+  }
 
-      input.value = math.eval(input.value);
-    });
+  inputHandler (event) {
+    if (event.key !== 'Enter') { return }
+    try {
+      const newValue = math.eval(this.input.value);
+      this.onCalculated(newValue);
+      this.input.value = newValue;
+    } catch (err) {
+      this.onError(err);
+    }
   }
 }

@@ -18,9 +18,11 @@ describe('InlineCalculator', () => {
     });
 
     it('should do nothing when wrong key is pressed', () => {
-      input.dispatchEvent(new KeyboardEvent('keydown', {
-        key: 'f',
-      }));
+      input.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'f'
+        })
+      );
 
       expect(math.eval).not.toBeCalled();
       expect(input.value).toBe('2 + 2');
@@ -29,23 +31,27 @@ describe('InlineCalculator', () => {
     it('should update input value', () => {
       math.eval.mockReturnValueOnce(4);
 
-      input.dispatchEvent(new KeyboardEvent('keydown', {
-        key: 'Enter',
-      }));
+      input.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'Enter'
+        })
+      );
 
       expect(math.eval).toBeCalledWith('2 + 2');
       expect(input.value).toBe('4');
     });
 
-    it('should throw an error when invalid characters are passed', () => {
+    it('should throw an error when invalid characters are used', () => {
       input.value = 'a + b';
       math.eval.mockImplementation(() => {
         throw new Error('you dun goofed');
       });
 
-      input.dispatchEvent(new KeyboardEvent('keydown', {
-        key: 'Enter',
-      }));
+      input.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'Enter'
+        })
+      );
 
       expect(math.eval).toThrow('you dun goofed');
     });
@@ -62,9 +68,11 @@ describe('InlineCalculator', () => {
       input.value = '2 + 2';
       math.eval.mockReturnValueOnce(4);
 
-      input.dispatchEvent(new KeyboardEvent('keydown', {
-        key: 'Enter',
-      }));
+      input.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'Enter'
+        })
+      );
 
       expect(math.eval).toBeCalledWith('2 + 2');
       expect(input.value).toBe('4');
@@ -77,7 +85,7 @@ describe('InlineCalculator', () => {
       let onErrorCallback = jest.fn();
       document.body.innerHTML = '<input type="text" id="inline-calculator">';
       new InlineCalculator({
-        onError: onErrorCallback,
+        onError: onErrorCallback
       });
       input = document.querySelector('#inline-calculator');
       input.value = 'a + b';
@@ -85,9 +93,11 @@ describe('InlineCalculator', () => {
         throw new Error('you dun goofed');
       });
 
-      input.dispatchEvent(new KeyboardEvent('keydown', {
-        key: 'Enter',
-      }));
+      input.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'Enter'
+        })
+      );
 
       expect(math.eval).toThrow('you dun goofed');
       expect(onErrorCallback).toBeCalledWith('Error: you dun goofed');
@@ -106,9 +116,11 @@ describe('InlineCalculator', () => {
       input.value = 'a + b';
       math.eval.mockReturnValueOnce('hello there');
 
-      input.dispatchEvent(new KeyboardEvent('keydown', {
-        key: 'Enter',
-      }));
+      input.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'Enter'
+        })
+      );
 
       expect(onCalculatedCallback).toBeCalledWith('hello there');
     });

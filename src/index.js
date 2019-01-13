@@ -23,7 +23,7 @@ export default class InlineCalculator {
       if (this.config.onCalculated) {
         this.config.onCalculated(newValue);
       }
-    } catch(error) {
+    } catch (error) {
       if (this.config.onError) {
         this.config.onError(error.toString());
       }

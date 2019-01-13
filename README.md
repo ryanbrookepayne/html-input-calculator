@@ -92,7 +92,7 @@ import InlineCalculator from 'inline-calculator';
 
 new InlineCalculator({
   onCalculated: function(value) {
-    alert(`Your new value is ${value}`);
+    alert(`Your new value is ${value}.`);
   }
 });
 ```

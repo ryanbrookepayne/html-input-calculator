@@ -63,26 +63,15 @@ describe('InlineCalculator', () => {
     });
   });
 
-  describe('Custom Hooks', () => {
+  describe('onError callback', () => {
     let input;
-    let onErrorhasBeenCalled = false;
-    let onErrorValue = null;
-    let onCalculatedHasBeenCalled = false;
-    let onCalculatedValue = null;
+    let onErrorCallback = jest.fn();
 
     beforeEach(() => {
       document.body.innerHTML = '<input type="text" id="inline-calculator">';
       new InlineCalculator({
-        onError: function (error) {
-          onErrorhasBeenCalled = true;
-          onErrorValue = error;
-        },
-        onCalculated: function (val) {
-          onCalculatedHasBeenCalled = true;
-          onCalculatedValue = val;
-        }
+        onError: onErrorCallback,
       });
-
       input = document.querySelector('#inline-calculator');
       input.value = 'a + b';
     });
@@ -96,10 +85,27 @@ describe('InlineCalculator', () => {
         key: 'Enter',
       }));
 
-      expect(math.eval).toBeCalledWith('a + b');
       expect(math.eval).toThrow('you dun goofed');
-      expect(onErrorhasBeenCalled).toBe(true);
-      expect(onErrorValue.toString()).toEqual('Error: you dun goofed');
+      expect(onErrorCallback).toBeCalledWith('Error: you dun goofed');
+    });
+  });
+
+  describe('onCalculated callback', () => {
+    let input;
+    let onCalculatedHasBeenCalled = false;
+    let onCalculatedValue = null;
+
+    beforeEach(() => {
+      document.body.innerHTML = '<input type="text" id="inline-calculator">';
+      new InlineCalculator({
+        onCalculated: function (val) {
+          onCalculatedHasBeenCalled = true;
+          onCalculatedValue = val;
+        }
+      });
+
+      input = document.querySelector('#inline-calculator');
+      input.value = 'a + b';
     });
 
     it('should fire the passed onCalculated handler', () => {

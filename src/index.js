@@ -20,8 +20,8 @@ export default class InlineCalculator {
       const newValue = math.eval(this.input.value);
       this.config.onCalculated(newValue);
       this.input.value = newValue;
-    } catch (err) {
-      this.config.onError(err);
+    } catch(error) {
+      this.config.onError(error.toString());
     }
   }
 }

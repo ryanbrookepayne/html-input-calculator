@@ -81,11 +81,11 @@ new InlineCalculator({
 });
 ```
 
-### Hooks
+### Callbacks
 
 #### onCalculated
 
-The `onCalculated` hook is called directly after the calculation.
+The `onCalculated` callback is called directly after the calculation.
 
 ```js
 import InlineCalculator from 'inline-calculator';
@@ -99,7 +99,7 @@ new InlineCalculator({
 
 #### onError
 
-The `onError` hook is called when [mathjs](http://mathjs.org/) throws an exception.
+The `onError` callback is called when [mathjs](http://mathjs.org/) throws an exception.
 
 ```js
 import InlineCalculator from 'inline-calculator';

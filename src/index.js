@@ -4,11 +4,12 @@ export default class InlineCalculator {
   constructor(userConfig) {
     const defaultConfig = {
       selector: '#inline-calculator',
-      onCalculated: function(val){},
-      onError: function(err){}
+      onCalculated: null,
+      onError: null
     };
 
     this.config = Object.assign({}, defaultConfig, userConfig);
+
     this.input = document.querySelector(this.config.selector);
     this.input.addEventListener('keydown', this.inputHandler.bind(this), false);
   }
@@ -18,10 +19,14 @@ export default class InlineCalculator {
 
     try {
       const newValue = math.eval(this.input.value);
-      this.config.onCalculated(newValue);
       this.input.value = newValue;
+      if (this.config.onCalculated) {
+        this.config.onCalculated(newValue);
+      }
     } catch(error) {
-      this.config.onError(error.toString());
+      if (this.config.onError) {
+        this.config.onError(error.toString());
+      }
     }
   }
 }

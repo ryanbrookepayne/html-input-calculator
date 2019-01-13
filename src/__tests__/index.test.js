@@ -1,4 +1,3 @@
-/* global jest, describe, expect */
 import * as math from 'mathjs';
 import InlineCalculator from '../index';
 jest.mock('mathjs', () => {
@@ -18,7 +17,7 @@ describe('InlineCalculator', () => {
       input.value = '2 + 2';
     });
 
-    it('should do nothing', () => {
+    it('should do nothing when wrong key is pressed', () => {
       input.dispatchEvent(new KeyboardEvent('keydown', {
         key: 'f',
       }));
@@ -37,21 +36,30 @@ describe('InlineCalculator', () => {
       expect(math.eval).toBeCalledWith('2 + 2');
       expect(input.value).toBe('4');
     });
+
+    it('should throw an error when invalid characters are passed', () => {
+      input.value = 'a + b';
+      math.eval.mockImplementation(() => {
+        throw new Error('you dun goofed');
+      });
+
+      input.dispatchEvent(new KeyboardEvent('keydown', {
+        key: 'Enter',
+      }));
+
+      expect(math.eval).toThrow('you dun goofed');
+    });
   });
 
   describe('Custom selector', () => {
-    let input;
-
-    beforeEach(() => {
+    it('should accept a custom selector', () => {
+      let input;
       document.body.innerHTML = '<input type="text" class="inline-calculator">';
       new InlineCalculator({
         selector: '.inline-calculator'
       });
       input = document.querySelector('.inline-calculator');
       input.value = '2 + 2';
-    });
-
-    it('should accept a custom selector', () => {
       math.eval.mockReturnValueOnce(4);
 
       input.dispatchEvent(new KeyboardEvent('keydown', {
@@ -64,19 +72,15 @@ describe('InlineCalculator', () => {
   });
 
   describe('onError callback', () => {
-    let input;
-    let onErrorCallback = jest.fn();
-
-    beforeEach(() => {
+    it('should throw an error and fire the passed onError handler', () => {
+      let input;
+      let onErrorCallback = jest.fn();
       document.body.innerHTML = '<input type="text" id="inline-calculator">';
       new InlineCalculator({
         onError: onErrorCallback,
       });
       input = document.querySelector('#inline-calculator');
       input.value = 'a + b';
-    });
-
-    it('should throw an error and fire the passed onError handler', () => {
       math.eval.mockImplementation(() => {
         throw new Error('you dun goofed');
       });
@@ -91,32 +95,22 @@ describe('InlineCalculator', () => {
   });
 
   describe('onCalculated callback', () => {
-    let input;
-    let onCalculatedHasBeenCalled = false;
-    let onCalculatedValue = null;
-
-    beforeEach(() => {
+    it('should fire the passed onCalculated handler', () => {
+      let input;
+      let onCalculatedCallback = jest.fn();
       document.body.innerHTML = '<input type="text" id="inline-calculator">';
       new InlineCalculator({
-        onCalculated: function (val) {
-          onCalculatedHasBeenCalled = true;
-          onCalculatedValue = val;
-        }
+        onCalculated: onCalculatedCallback
       });
-
       input = document.querySelector('#inline-calculator');
       input.value = 'a + b';
-    });
-
-    it('should fire the passed onCalculated handler', () => {
       math.eval.mockReturnValueOnce('hello there');
 
       input.dispatchEvent(new KeyboardEvent('keydown', {
         key: 'Enter',
       }));
 
-      expect(onCalculatedHasBeenCalled).toBe(true);
-      expect(onCalculatedValue).toEqual('hello there');
+      expect(onCalculatedCallback).toBeCalledWith('hello there');
     });
   });
 });

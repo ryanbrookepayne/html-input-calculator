@@ -13,7 +13,7 @@ An HTML inline input calculator for doing math in the browser. Inspired by the [
 - [Usage](#usage)
 - [Configuration](#configuration)
   - [Selector](#selector)
-  - [Hooks](#hooks)
+  - [Callbacks](#callbacks)
     - [onCalculated](#oncalculated)
     - [onError](#onerror)
 - [Contributing](#contributing)

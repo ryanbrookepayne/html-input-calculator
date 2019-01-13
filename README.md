@@ -8,11 +8,14 @@ An HTML inline input calculator for doing math in the browser. Inspired by the [
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-### Table of Contents
+#### Table of Contents
 
 - [Usage](#usage)
 - [Configuration](#configuration)
   - [Selector](#selector)
+  - [Hooks](#hooks)
+    - [onCalculated](#oncalculated)
+    - [onError](#onerror)
 - [Contributing](#contributing)
   - [Getting Start](#getting-start)
   - [Example](#example)
@@ -78,47 +81,34 @@ new InlineCalculator({
 });
 ```
 
-You can instantiate as many instances as you'd like. It is recommended that you use different selectors for each instance as the event hooks may be unexpectedly fired multiple times.
-
-```js
-import InlineCalculator from 'inline-calculator';
-
-var instanceOne = new InlineCalculator({
-  selector: '#instanceOne'
-});
-
-var instanceTwo = new InlineCalculator({
-  selector: '.instance-two'
-});
-```
-
-
 ### Hooks
 
 #### onCalculated
 
-Called directly after the calculation
+The `onCalculated` hook is called directly after the calculation.
 
 ```js
 import InlineCalculator from 'inline-calculator';
+
 new InlineCalculator({
-  onCalculated: function (val) {
-    console.log(val)
+  onCalculated: function(value) {
+    alert(`Your new value is ${value}`);
   }
-})
+});
 ```
 
 #### onError
 
-Called on any exception
+The `onError` hook is called when [mathjs](http://mathjs.org/) throws an exception.
 
 ```js
 import InlineCalculator from 'inline-calculator';
+
 new InlineCalculator({
-  onError: function (err) {
-    console.error(err)
+  onError: function (error) {
+    alert(`Oops! Something went wrong. ${error}`);
   }
-})
+});
 ```
 
 ## Contributing

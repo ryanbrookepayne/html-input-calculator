@@ -113,47 +113,4 @@ describe('InlineCalculator', () => {
       expect(onCalculatedValue).toEqual('hello there');
     });
   });
-
-  describe('Multiple Instances', () => {
-    let inputOne;
-    let inputTwo;
-    let elOne;
-    let elTwo;
-
-    beforeEach(() => {
-      document.body.innerHTML = '<input type="text" id="inputOne"/> <input type="text" id="inputTwo"/>';
-      elOne = new InlineCalculator({ selector: '#inputOne' });
-      elTwo = new InlineCalculator({ selector: '#inputTwo' });
-
-      inputOne = document.querySelector('#inputOne');
-      inputTwo = document.querySelector('#inputTwo');
-
-      inputOne.value = 'a + b'
-      inputTwo.value = '2 + 4'
-    });
-
-    it('should exist', () => {
-      expect(inputOne).not.toBe(undefined);
-      expect(inputTwo).not.toBe(undefined);
-    });
-
-    it('should have value', () => {
-      expect(inputOne.value).toBe('a + b');
-      expect(inputTwo.value).toBe('2 + 4')
-    });
-
-    it('one should error, one should be unchanged', () => {
-      math.eval.mockImplementation(() => {
-        throw new Error('inputOne');
-      });
-
-      inputOne.dispatchEvent(new KeyboardEvent('keydown', {
-        key: 'Enter',
-      }));
-
-      expect(math.eval).toBeCalledWith('a + b');
-      expect(math.eval).toThrow('inputOne');
-      expect(inputTwo.value).toBe('2 + 4');
-    });
-  });
 });

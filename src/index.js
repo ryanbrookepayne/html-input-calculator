@@ -9,20 +9,19 @@ export default class InlineCalculator {
     };
 
     this.config = Object.assign({}, defaultConfig, userConfig);
-    this.onError = this.config.onError;
-    this.onCalculated = this.config.onCalculated;
     this.input = document.querySelector(this.config.selector);
     this.input.addEventListener('keydown', this.inputHandler.bind(this), false);
   }
 
-  inputHandler (event) {
-    if (event.key !== 'Enter') { return }
+  inputHandler(event) {
+    if (event.key !== 'Enter') return;
+
     try {
       const newValue = math.eval(this.input.value);
-      this.onCalculated(newValue);
+      this.config.onCalculated(newValue);
       this.input.value = newValue;
     } catch (err) {
-      this.onError(err);
+      this.config.onError(err);
     }
   }
 }

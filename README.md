@@ -8,11 +8,14 @@ An HTML inline input calculator for doing math in the browser. Inspired by the [
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-### Table of Contents
+#### Table of Contents
 
 - [Usage](#usage)
 - [Configuration](#configuration)
   - [Selector](#selector)
+  - [Callbacks](#callbacks)
+    - [onCalculated](#oncalculated)
+    - [onError](#onerror)
 - [Contributing](#contributing)
   - [Getting Start](#getting-start)
   - [Example](#example)
@@ -75,6 +78,36 @@ import InlineCalculator from 'inline-calculator';
 
 new InlineCalculator({
   selector: '.my-custom-class'
+});
+```
+
+### Callbacks
+
+#### onCalculated
+
+The `onCalculated` callback is called directly after the calculation.
+
+```js
+import InlineCalculator from 'inline-calculator';
+
+new InlineCalculator({
+  onCalculated: function(value) {
+    alert(`Your new value is ${value}.`);
+  }
+});
+```
+
+#### onError
+
+The `onError` callback is called when [mathjs](http://mathjs.org/) throws an exception.
+
+```js
+import InlineCalculator from 'inline-calculator';
+
+new InlineCalculator({
+  onError: function (error) {
+    alert(`Oops! Something went wrong. ${error}`);
+  }
 });
 ```
 

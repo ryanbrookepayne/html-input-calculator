@@ -13,9 +13,13 @@
   "main": "src/index.js",
   "repository": "git@github.com:ryanbrookepayne/inline-calculator.git",
   "author": "Ryan Payne <ryanbrookepayne@gmail.com>",
+  "contributors": [
+    "Joseph Snell <joepsnell@gmail.com> (https://github.com/wulfmann)"
+  ],
   "license": "MIT",
   "scripts": {
     "test": "jest",
+    "prettier": "prettier --config config/prettier.config.js --write \"src/**/*.{js,json}\"",
     "start": "webpack-dev-server --open"
   },
   "devDependencies": {
@@ -24,6 +28,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "jest": "^23.6.0",
+    "prettier": "^1.15.3",
     "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.14"

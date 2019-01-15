@@ -70,12 +70,6 @@ describe('InlineCalculator', () => {
       submitInput();
       expect(math.eval).toThrow('you dun goofed');
     });
-
-    it('should not clear the input when calculating a non-calculation', () => {
-      input.value = '4';
-      submitInput();
-      expect(input.value).toBe('4');
-    });
   });
 
   describe('Custom selector', () => {

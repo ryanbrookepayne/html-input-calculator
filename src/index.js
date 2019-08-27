@@ -1,30 +1,58 @@
 import * as math from 'mathjs';
 
 export default class InlineCalculator {
-  constructor(userConfig) {
-    const defaultConfig = {
+  static initialize(userConfig) {
+    return new this(userConfig, {
+      selector: '[inline-calculator]',
+      onCalculated: null,
+      onError: null
+    });
+  }
+
+  constructor(
+    userConfig,
+    defaultConfig = {
       selector: '#inline-calculator',
       onCalculated: null,
       onError: null
-    };
+    }
+  ) {
+    this.inputHandler = this.inputHandler.bind(this);
+    this.attachInputListener = this.attachInputListener.bind(this);
+    this.removeInputListener = this.removeInputListener.bind(this);
 
     this.config = Object.assign({}, defaultConfig, userConfig);
+    document.body.addEventListener('focus', this.attachInputListener, true);
+    document.body.addEventListener('blur', this.removeInputListener, true);
+  }
 
-    this.input = document.querySelector(this.config.selector);
-    this.input.addEventListener('keydown', this.inputHandler.bind(this), false);
+  attachInputListener(event) {
+    if (!event.target.matches(this.config.selector)) {
+      return;
+    }
+    event.target.addEventListener('keydown', this.inputHandler);
+  }
+
+  removeInputListener(event) {
+    if (!event.target.matches(this.config.selector)) {
+      return;
+    }
+    event.target.removeEventListener('keydown', this.inputHandler);
   }
 
   inputHandler(event) {
     if (event.key !== 'Enter') return;
 
     try {
-      const newValue = math.eval(this.input.value);
-      this.input.value = newValue;
-      if (this.config.onCalculated) {
+      const input = event.target;
+      const newValue = math.eval(input.value);
+
+      input.value = newValue;
+      if (typeof this.config.onCalculated === 'function') {
         this.config.onCalculated(newValue);
       }
     } catch (error) {
-      if (this.config.onError) {
+      if (typeof this.config.onError === 'function') {
         this.config.onError(error.toString());
       }
     }

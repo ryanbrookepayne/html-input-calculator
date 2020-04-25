@@ -1,7 +1,7 @@
-import InlineCalculator from '../src/index';
+import InlineCalculator from "../src/index";
 
-new InlineCalculator({
-  onError: (error) => {
+InlineCalculator.initialize({
+  onError: error => {
     alert(error);
   }
 });

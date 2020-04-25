@@ -8,6 +8,7 @@ An HTML inline input calculator for doing math in the browser. Inspired by the [
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 #### Table of Contents
 
 - [Usage](#usage)
@@ -38,15 +39,15 @@ npm i inline-calculator
 Create a text input with an id of `inline-calculator`.
 
 ```html
-<input type="text" id="inline-calculator">
+<input type="text" id="inline-calculator" />
 ```
 
 Import and initialize the constructor.
 
 ```js
-import InlineCalculator from 'inline-calculator';
+import InlineCalculator from "inline-calculator";
 
-new InlineCalculator();
+InlineCalculator.initialize();
 ```
 
 When users enter a mathematical expression and press the enter key, the input's value will update with the return value of the expression.
@@ -70,14 +71,14 @@ Will return:
 Override the default id (`#inline-calculator`) selector. The event listener uses [`Document.querySelector()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) so you can pass any type of selector you want.
 
 ```html
-<input type="text" class="my-custom-class">
+<input type="text" class="my-custom-class" />
 ```
 
 ```js
-import InlineCalculator from 'inline-calculator';
+import InlineCalculator from "inline-calculator";
 
-new InlineCalculator({
-  selector: '.my-custom-class'
+InlineCalculator.initialize({
+  selector: ".my-custom-class"
 });
 ```
 
@@ -88,9 +89,9 @@ new InlineCalculator({
 The `onCalculated` callback is called directly after the calculation.
 
 ```js
-import InlineCalculator from 'inline-calculator';
+import InlineCalculator from "inline-calculator";
 
-new InlineCalculator({
+InlineCalculator.initialize({
   onCalculated: function(value) {
     alert(`Your new value is ${value}.`);
   }
@@ -102,10 +103,10 @@ new InlineCalculator({
 The `onError` callback is called when [mathjs](http://mathjs.org/) throws an exception.
 
 ```js
-import InlineCalculator from 'inline-calculator';
+import InlineCalculator from "inline-calculator";
 
-new InlineCalculator({
-  onError: function (error) {
+InlineCalculator.initialize({
+  onError: function(error) {
     alert(`Oops! Something went wrong. ${error}`);
   }
 });

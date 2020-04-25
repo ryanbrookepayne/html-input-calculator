@@ -39,7 +39,7 @@ npm i inline-calculator
 Create a text input with an id of `inline-calculator`.
 
 ```html
-<input type="text" id="inline-calculator" />
+<input type="text" inline-calculator />
 ```
 
 Import and initialize the constructor.

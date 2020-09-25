@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/inline-calculator.svg)](https://badge.fury.io/js/inline-calculator)
 
-An HTML inline input calculator for doing math in the browser. Inspired by the [YNAB budget calculator](https://docs.youneedabudget.com/article/1027-in-line-calculations). Math calculations are computed using [mathjs](http://mathjs.org/).
+Inline Calculator is an HTML form input calculator for doing math in the browser. Inspired by the [YNAB budget calculator](https://docs.youneedabudget.com/article/1027-in-line-calculations). Math calculations are computed using [mathjs](http://mathjs.org/).
 
 ![](./demo.gif)
 

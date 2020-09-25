@@ -1,4 +1,4 @@
-# Inline Calculator
+# 🧮 Inline Calculator
 
 [![npm version](https://badge.fury.io/js/inline-calculator.svg)](https://badge.fury.io/js/inline-calculator)
 

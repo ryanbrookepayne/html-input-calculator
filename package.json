@@ -27,10 +27,10 @@
     "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
     "babel-jest": "^24.9.0",
-    "jest": "^24.9.0",
+    "jest": "^26.4.2",
     "prettier": "^1.15.3",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.9",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
